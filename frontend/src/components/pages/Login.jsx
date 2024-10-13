@@ -45,7 +45,7 @@ const Login = () => {
           <h1>LOGIN</h1>
           <div>
             <select value={role} onChange={(e) => setRole(e.target.value)}>
-              <option value="">SELECT ROLE</option>
+              <option value="">SELECT ROLEe</option>
               <option value="Reader">READER</option>
               <option value="Author">AUTHOR</option>
             </select>
