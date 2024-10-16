@@ -6,3 +6,4 @@ part #17 automatically
 part 21
 part 23 with sonaeqube 
 part 24 testing 
+part 25 testing 
