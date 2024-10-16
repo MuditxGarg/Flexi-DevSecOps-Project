@@ -23,7 +23,7 @@ const Navbar = () => {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        "http://localhost:4000/api/v1/user/logout",
+        "http://13.234.231.46:4000/api/v1/user/logout",
         { withCredentials: true }
       );
       setIsAuthenticated(false);

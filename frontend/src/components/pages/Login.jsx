@@ -15,7 +15,7 @@ const Login = () => {
     e.preventDefault();
     await axios
       .post(
-        "http://localhost:4000/api/v1/user/login",
+        "http://13.234.231.46:4000/api/v1/user/login",
         { email, password, role },
         {
           withCredentials: true,
