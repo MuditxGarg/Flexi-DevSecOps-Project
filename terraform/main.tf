@@ -23,17 +23,24 @@ resource "aws_instance" "jenkins_instance" {
     host        = self.public_ip
   }
 
-    provisioner "remote-exec" {
-    inline = [
+      # Provisioner to install Docker, Jenkins, and other required tools
+      provisioner "remote-exec" {
+      inline = [
       "sudo apt update -y",
       "sudo apt install docker.io -y",
       "sudo systemctl start docker",
-      "sudo usermod -aG docker ubuntu",
+      "sudo usermod -aG docker ubuntu",  # Add the 'ubuntu' user to Docker group
       "sudo curl -L https://github.com/docker/compose/releases/download/v2.10.2/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose",
       "sudo chmod +x /usr/local/bin/docker-compose",
-      "sudo apt install openjdk-8-jdk -y",  # For Jenkins
-      "sudo apt install git -y",
-      "sudo systemctl start jenkins"
+      "sudo apt install openjdk-11-jdk -y",  # Install Java for Jenkins (Jenkins now requires Java 11)
+      
+      # Adding Jenkins repository and installing Jenkins
+      "wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -",
+      "sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'",
+      "sudo apt update -y",
+      "sudo apt install jenkins -y",
+      "sudo systemctl start jenkins",  # Start Jenkins service
+      "sudo systemctl enable jenkins"  # Enable Jenkins to start at boot
     ]
   }
 }
