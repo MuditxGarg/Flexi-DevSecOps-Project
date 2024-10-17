@@ -23,16 +23,16 @@ resource "aws_instance" "jenkins_instance" {
     host        = self.public_ip
   }
 
-  provisioner "remote-exec" {
+    provisioner "remote-exec" {
     inline = [
-      "sudo yum update -y",
-      "sudo yum install docker -y",
+      "sudo apt update -y",
+      "sudo apt install docker.io -y",
       "sudo systemctl start docker",
-      "sudo usermod -aG docker ec2-user",
+      "sudo usermod -aG docker ubuntu",
       "sudo curl -L https://github.com/docker/compose/releases/download/v2.10.2/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose",
       "sudo chmod +x /usr/local/bin/docker-compose",
-      "sudo yum install java-1.8.0-openjdk -y",  # For Jenkins
-      "sudo yum install -y git",
+      "sudo apt install openjdk-8-jdk -y",  # For Jenkins
+      "sudo apt install git -y",
       "sudo systemctl start jenkins"
     ]
   }
