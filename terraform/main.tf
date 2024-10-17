@@ -1,9 +1,9 @@
 provider "aws" {
-  region = "ap-south-1" 
+  region = "ap-south-1"
 }
 
 resource "aws_instance" "jenkins_instance" {
-  ami           = "ami-0dee22c13ea7a9a67" 
+  ami           = "ami-0dee22c13ea7a9a67"
   instance_type = "t2.micro"
 
   tags = {
@@ -15,11 +15,12 @@ resource "aws_instance" "jenkins_instance" {
   # Allow access to Jenkins, Docker, SonarQube, and SSH
   security_groups = [aws_security_group.jenkins_sg.name]
 
+  # Modify connection to use the private key passed from Jenkins
   connection {
     type        = "ssh"
-    user        = "ubuntu" 
-    private_key = file("${path.module}/admin-flexi-key.pem")
-    host        = self.public_ip  
+    user        = "ubuntu"
+    private_key = var.private_key_content  # Use variable for the private key content
+    host        = self.public_ip
   }
 
   provisioner "remote-exec" {
@@ -75,4 +76,10 @@ resource "aws_security_group" "jenkins_sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+}
+
+# Define the variable for the private key content
+variable "private_key_content" {
+  description = "The private key content for SSH access"
+  type        = string
 }
