@@ -15,6 +15,13 @@ resource "aws_instance" "jenkins_instance" {
   # Allow access to Jenkins, Docker, SonarQube, and SSH
   security_groups = [aws_security_group.jenkins_sg.name]
 
+  connection {
+    type        = "ssh"
+    user        = "ubuntu" 
+    private_key = file("${path.module}/admin-flexi-key.pem")
+    host        = self.public_ip  
+  }
+
   provisioner "remote-exec" {
     inline = [
       "sudo yum update -y",
