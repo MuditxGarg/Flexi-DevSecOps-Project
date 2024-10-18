@@ -41,7 +41,7 @@ const Register = () => {
 
     try {
       const { data } = await axios.post(
-        "http://13.234.231.46:4000/api/v1/user/register",
+        "http://65.0.85.33:4000/api/v1/user/register",
         formData,
         {
           withCredentials: true,

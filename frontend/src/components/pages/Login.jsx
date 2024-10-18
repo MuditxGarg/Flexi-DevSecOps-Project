@@ -15,7 +15,7 @@ const Login = () => {
     e.preventDefault();
     await axios
       .post(
-        "http://13.234.231.46:4000/api/v1/user/login",
+        "http://65.0.85.33:4000/api/v1/user/login",
         { email, password, role },
         {
           withCredentials: true,
@@ -34,8 +34,8 @@ const Login = () => {
       });
   };
 
-  if(isAuthenticated){
-    return <Navigate to={'/'}/>
+  if (isAuthenticated) {
+    return <Navigate to={"/"} />;
   }
 
   return (

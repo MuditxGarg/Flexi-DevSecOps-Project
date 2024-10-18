@@ -9,7 +9,7 @@ const AllAuthors = () => {
   useEffect(() => {
     const fetchAuthors = async () => {
       const { data } = await axios.get(
-        "http://13.234.231.46:4000/api/v1/user/authors",
+        "http://65.0.85.33:4000/api/v1/user/authors",
         { withCredentials: true }
       );
       setAuthors(data.authors);
@@ -30,7 +30,7 @@ const AllAuthors = () => {
             return (
               <div className="card" key={element._id}>
                 {/* {authors && authors.avatar && ( */}
-                  <img src={element.avatar.url} alt="author_avatar" />
+                <img src={element.avatar.url} alt="author_avatar" />
                 {/* )} */}
                 <h3>{element.name}</h3>
                 <p>{element.role}</p>

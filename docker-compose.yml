@@ -18,7 +18,7 @@ services:
       - CLOUDINARY_CLIENT_NAME=dvbycvgxo
       - CLOUDINARY_CLIENT_API=731961421713156
       - CLOUDINARY_CLIENT_SECRET=vT9TEZyabOIHrho8fEDD6HmLOgk
-      - FRONTEND_URL=http://13.234.231.46
+      - FRONTEND_URL=http://65.0.85.33
     networks:
       - app-network
 

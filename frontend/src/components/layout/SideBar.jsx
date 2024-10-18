@@ -17,7 +17,7 @@ const SideBar = ({ setComponent }) => {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        "http://13.234.231.46:4000/api/v1/user/logout",
+        "http://65.0.85.33:4000/api/v1/user/logout",
         { withCredentials: true }
       );
       setIsAuthenticated(false);
@@ -52,9 +52,7 @@ const SideBar = ({ setComponent }) => {
           <button onClick={() => handleComponent("Create Blog")}>
             CREATE BLOG
           </button>
-          <button onClick={() => handleComponent("Analytics")}>
-            CHART
-          </button>
+          <button onClick={() => handleComponent("Analytics")}>CHART</button>
           <button onClick={() => handleComponent("My Profile")}>
             MY PROFILE
           </button>

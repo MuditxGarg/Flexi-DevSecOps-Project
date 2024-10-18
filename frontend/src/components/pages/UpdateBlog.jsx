@@ -29,7 +29,7 @@ const UpdateBlog = () => {
     const fetchBlog = async () => {
       try {
         const { data } = await axios.get(
-          `http://13.234.231.46:4000/api/v1/blog/singleblog/${id}`,
+          `http://65.0.85.33:4000/api/v1/blog/singleblog/${id}`,
           { withCredentials: true }
         );
         setTitle(data.blog.title);
@@ -105,7 +105,7 @@ const UpdateBlog = () => {
 
     try {
       const { data } = await axios.put(
-        `http://13.234.231.46:4000/api/v1/blog/update/${id}`,
+        `http://65.0.85.33:4000/api/v1/blog/update/${id}`,
         updatedBlog,
         { withCredentials: true }
       );
